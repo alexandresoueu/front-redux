@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import './App.css';
+
 import Cards from './components/Cards/Cards';
 import Interval from './components/Interval/Interval';
 import Average from './components/Math/Average';
@@ -7,6 +9,9 @@ import Sum from './components/Math/Sum';
 import Sort from './components/Math/Sort';
 
 function App() {
+  const [Min, setMin] = useState(0)
+  const [Max, setMax] = useState(100)
+
   return (
     <div className="App">
       <h1>React Redux exercise</h1>
@@ -20,12 +25,12 @@ function App() {
       <Cards title='Card FOUR' purple>PURPLEzin</Cards>
       </div>
       <div className='line'>
-        <Interval />
+        <Interval min={Min} max={Max} onMinChanged={setMin} onMaxChanged={setMax} />
       </div>
       <div className='line'>
-        <Average />
-        <Sum />
-        <Sort />
+        <Average min={Min} max={Max} />
+        <Sum min={Min} max={Max} />
+        <Sort min={Min} max={Max} />
       </div>
     </div>
   );
