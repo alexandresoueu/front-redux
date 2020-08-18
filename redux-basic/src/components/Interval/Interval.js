@@ -5,7 +5,7 @@ import Cards from '../Cards/Cards'
 
 const Interval = props => {
   return (
-    <Cards title='Numbers Interval' red>
+    <Cards title='Numbers Interval with Redux' red>
       <div className='Interval'>
         <span>
           <strong>Min:</strong>
