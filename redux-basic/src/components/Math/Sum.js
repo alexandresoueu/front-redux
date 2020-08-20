@@ -18,7 +18,7 @@ const Sum = props => {
   )
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     min: state.numbers.min,
     max: state.numbers.max,
