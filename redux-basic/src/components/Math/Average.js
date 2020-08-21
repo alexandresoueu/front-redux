@@ -10,7 +10,7 @@ const Average = props => {
       <div className='Average'>
         <span>
           <span>Result:</span>
-  <strong>{ (min + max ) / 2}</strong>
+          <strong>{(min + max) / 2}</strong>
         </span>
       </div>
     </Cards>
