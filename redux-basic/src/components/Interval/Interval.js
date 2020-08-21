@@ -4,9 +4,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Cards from '../Cards/Cards'
+import putNumberMin from '../../store/actions/numbersAction'
 
 const Interval = props => {
-  const { min, max } = props
+  const { min, max } = props;
+  props.actionFunc(1000)
 
   return (
     <Cards title='Numbers Interval with Redux' red>
@@ -32,4 +34,13 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Interval)
+const mapActionToProps = dispatch => {
+  return {
+    actionFunc(newNumber) {
+      const action = putNumberMin(newNumber)
+      dispatch(action)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapActionToProps)(Interval)
