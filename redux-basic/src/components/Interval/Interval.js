@@ -4,22 +4,21 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Cards from '../Cards/Cards'
-import putNumberMin from '../../store/actions/numbersAction'
+import { putNumberMin, putNumberMax } from '../../store/actions/numbersAction'
 
 const Interval = props => {
-  const { min, max } = props;
-  props.actionFunc(1000)
+  const { min, max } = props
 
   return (
     <Cards title='Numbers Interval with Redux' red>
       <div className='Interval'>
         <span>
           <strong>Min:</strong>
-          <input type='number' value={min} />
+          <input type='number' value={min} onChange={event => props.actionMin(+event.target.value)} />
         </span>
         <span>
           <strong>Max:</strong>
-          <input type='number' value={max} />
+          <input type='number' value={max} onChange={event => props.actionMax(+event.target.value)} />
         </span>
       </div>
 
@@ -34,13 +33,19 @@ const mapStateToProps = state => {
   }
 }
 
-const mapActionToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
-    actionFunc(newNumber) {
-      const action = putNumberMin(newNumber)
+    actionMin(newMin) {
+      const action = putNumberMin(newMin)
+      dispatch(action)
+    },
+
+    actionMax(newMax) {
+      const action = putNumberMax(newMax)
       dispatch(action)
     }
   }
 }
 
-export default connect(mapStateToProps, mapActionToProps)(Interval)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Interval)

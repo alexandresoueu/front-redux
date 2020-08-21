@@ -6,4 +6,14 @@ const putNumberMin = newNumber => {
   }
 }
 
-export default putNumberMin
+const putNumberMax = newNumber => {
+  return {
+    type: 'PUT_MAX_VALUE',
+    payload: newNumber,
+  }
+}
+
+export {
+  putNumberMin,
+  putNumberMax
+}
